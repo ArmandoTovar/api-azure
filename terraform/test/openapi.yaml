@@ -1,0 +1,118 @@
+---
+openapi: 3.0.3
+info:
+  title: quarkus-todo-demo-app-aks API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /:
+    get:
+      tags:
+        - Index Resource
+      responses:
+        "200":
+          description: OK
+  /api:
+    get:
+      tags:
+        - Todo Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Todo"
+    post:
+      tags:
+        - Todo Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Todo"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+        - Todo Resource
+      responses:
+        "200":
+          description: OK
+    options:
+      tags:
+        - Todo Resource
+      responses:
+        "200":
+          description: OK
+  /api/{id}:
+    get:
+      tags:
+        - Todo Resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todo"
+    delete:
+      tags:
+        - Todo Resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        "200":
+          description: OK
+    patch:
+      tags:
+        - Todo Resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Todo"
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Todo:
+      required:
+        - title
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        title:
+          pattern: \S
+          type: string
+        completed:
+          type: boolean
+        order:
+          format: int32
+          type: integer
+        url:
+          type: string

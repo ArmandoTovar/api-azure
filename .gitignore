@@ -1,0 +1,40 @@
+# Ignorar archivos y carpetas de Quarkus
+target/
+**/target/
+*.log
+*.swp
+*.swo
+.DS_Store
+.mvn/
+!mvnw
+!mvnw.cmd
+
+# Ignorar configuraciones específicas de IntelliJ IDEA y VSCode
+.idea/
+.vscode/
+*.iml
+
+# Ignorar archivos de dependencias y construcción
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignorar Terraform
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/*.tfvars
+**/*.terraform/
+.terraform.lock.hcl
+crash.log
+*.tfplan
+
+# Ignorar credenciales y claves sensibles
+.env
+.envrc
+.env.local
+*.pem
+*.pfx
+*.key
+*.crt
+secrets.yml
