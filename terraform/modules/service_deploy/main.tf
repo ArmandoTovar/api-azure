@@ -61,9 +61,10 @@ resource "github_actions_variable" "resource_group_api" {
   ]
 }
 
+
 data "external" "get_service_account" {
- program = ["bash", "-c", <<EOT
-    CLIENT_ID=$(az aks connection show --connection akspostgresconn --name ${var.aks_name} --resource-group ${var.resource_group} --output json | jq -r '.authInfo.clientId')
+  program = ["bash", "-c", <<EOT
+    CLIENT_ID=$(az aks connection show --connection akspostgresconn --name ${var.aks_name} --resource-group ${var.resource_group} --output json | grep -o '"clientId": "[^"]*' | sed 's/"clientId": "//')
     echo "{ \"clientId\": \"$CLIENT_ID\" }"
   EOT
   ]
