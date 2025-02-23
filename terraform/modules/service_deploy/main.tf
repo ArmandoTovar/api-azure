@@ -62,12 +62,10 @@ resource "github_actions_variable" "resource_group_api" {
 }
 
 data "external" "get_service_account" {
-  program = ["bash", "-c", <<EOT
-    az aks connection show --connection akspostgresconn --name ${var.aks_name} --resource-group ${var.resource_group} --output json | jq -r '.authInfo.clientId' | jq -n --arg clientId "$(cat)" '{"clientId":$clientId}'
+ program = ["bash", "-c", <<EOT
+    CLIENT_ID=$(az aks connection show --connection akspostgresconn --name ${var.aks_name} --resource-group ${var.resource_group} --output json | jq -r '.authInfo.clientId')
+    echo "{ \"clientId\": \"$CLIENT_ID\" }"
   EOT
-  ]
-  depends_on = [
-    var.script_executed
   ]
 }
 resource "github_actions_variable" "service_account_name" {

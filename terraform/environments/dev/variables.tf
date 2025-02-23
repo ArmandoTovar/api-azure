@@ -2,7 +2,7 @@
 variable "prefix" {
   description = "Prefijo para los recursos de Azure"
   type        = string
-  default     = "mytestapparmando"
+  default     = "testnextarmando"
 }
 variable "azure_subscription_id" {
   description = "ID de la suscripción de Azure"
