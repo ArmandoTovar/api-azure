@@ -46,13 +46,13 @@ variable "app_location" {
 variable "api_location" {
   description = "Ubicación de la API en el repositorio"
   type        = string
-  default     = "/"
+  default     = ""
 }
 
 variable "output_location" {
   description = "Ubicación de los archivos de salida de la compilación"
   type        = string
-  default     = "dist"
+  default     = ""
 }
 
 variable "github_repository" {
