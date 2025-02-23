@@ -30,11 +30,11 @@ jobs:
           app_location: ${ app_location } # App source code path
           output_location: ${ output_location } # Built app content directory - optional
         env:
-          VITE_MSAL_CLIENT_ID: $${{ vars.VITE_MSAL_CLIENT_ID }}
-          VITE_MSAL_TENANT_ID: $${{ vars.VITE_MSAL_TENANT_ID }}
-          VITE_MSAL_REDIRECT_URI: $${{ vars.VITE_MSAL_REDIRECT_URI }}
-          VITE_MSAL_SCOPE: $${{ vars.VITE_MSAL_SCOPE }}
-          VITE_API_URL: $${{ vars.VITE_API_URL }}
+          NEXT_PUBLIC_MSAL_CLIENT_ID: $${{ vars.VITE_MSAL_CLIENT_ID }}
+          NEXT_PUBLIC_MSAL_TENANT_ID: $${{ vars.VITE_MSAL_TENANT_ID }}
+          NEXT_PUBLIC_MSAL_REDIRECT_URI: $${{ vars.VITE_MSAL_REDIRECT_URI }}
+          NEXT_PUBLIC_MSAL_SCOPE: $${{ vars.VITE_MSAL_SCOPE }}
+          NEXT_PUBLIC_API_URL: $${{ vars.VITE_API_URL }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
